@@ -1,0 +1,101 @@
+{
+  "name": "Alert",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "cyclone",
+        "flood",
+        "earthquake",
+        "landslide",
+        "tsunami",
+        "extreme_rainfall",
+        "heatwave",
+        "drought",
+        "storm",
+        "other"
+      ]
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "monitor",
+        "warn",
+        "escalate",
+        "critical"
+      ],
+      "default": "monitor"
+    },
+    "risk": {
+      "type": "number",
+      "default": 0
+    },
+    "affected_area": {
+      "type": "string",
+      "default": ""
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "severe",
+        "critical"
+      ],
+      "default": "moderate"
+    },
+    "message": {
+      "type": "string",
+      "default": ""
+    },
+    "recommended_action": {
+      "type": "string",
+      "default": ""
+    },
+    "latitude": {
+      "type": "number",
+      "default": 0
+    },
+    "longitude": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "expired",
+        "cancelled"
+      ],
+      "default": "active"
+    },
+    "is_demo": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "type",
+    "level",
+    "message"
+  ],
+  "rls": {
+    "read": true,
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "Broadcast",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "alert_id": {
+      "type": "string",
+      "default": "",
+      "description": "Reference to the verified Alert record this broadcast is based on"
+    },
+    "disaster_type": {
+      "type": "string",
+      "default": "other"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "severe",
+        "critical"
+      ],
+      "default": "severe"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "radius_km": {
+      "type": "number",
+      "default": 25,
+      "description": "Delivery radius around the incident coordinates"
+    },
+    "affected_area": {
+      "type": "string",
+      "default": ""
+    },
+    "sent_by": {
+      "type": "string",
+      "default": ""
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "expired"
+      ],
+      "default": "active"
+    },
+    "expires_at": {
+      "type": "string",
+      "default": "",
+      "description": "ISO timestamp when the broadcast auto-expires"
+    }
+  },
+  "required": [
+    "title",
+    "message",
+    "latitude",
+    "longitude",
+    "radius_km"
+  ],
+  "rls": {
+    "read": true,
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

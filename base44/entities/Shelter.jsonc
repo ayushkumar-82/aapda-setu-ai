@@ -1,0 +1,79 @@
+{
+  "name": "Shelter",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "address": {
+      "type": "string",
+      "default": ""
+    },
+    "capacity": {
+      "type": "number",
+      "default": 0
+    },
+    "occupancy": {
+      "type": "number",
+      "default": 0
+    },
+    "facilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "accessibility": {
+      "type": "string",
+      "default": ""
+    },
+    "contact": {
+      "type": "string",
+      "default": ""
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "full",
+        "closed",
+        "preparing"
+      ],
+      "default": "open"
+    },
+    "disaster_type": {
+      "type": "string",
+      "default": "general"
+    }
+  },
+  "required": [
+    "name",
+    "latitude",
+    "longitude"
+  ],
+  "rls": {
+    "read": true,
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

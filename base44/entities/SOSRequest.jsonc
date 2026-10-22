@@ -1,0 +1,109 @@
+{
+  "name": "SOSRequest",
+  "type": "object",
+  "properties": {
+    "sos_id": {
+      "type": "string",
+      "description": "Unique human-readable SOS ID"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "address": {
+      "type": "string",
+      "default": ""
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "medical",
+        "flood",
+        "fire",
+        "trapped",
+        "injury",
+        "other"
+      ],
+      "default": "other"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default": "high"
+    },
+    "message": {
+      "type": "string",
+      "default": ""
+    },
+    "reporter_name": {
+      "type": "string",
+      "default": ""
+    },
+    "reporter_phone": {
+      "type": "string",
+      "default": ""
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "acknowledged",
+        "responder_assigned",
+        "rescue_in_progress",
+        "resolved"
+      ],
+      "default": "pending"
+    },
+    "assigned_responder": {
+      "type": "string",
+      "default": ""
+    },
+    "priority_score": {
+      "type": "number",
+      "default": 0
+    },
+    "acknowledged_at": {
+      "type": "string",
+      "default": "",
+      "description": "ISO timestamp when the SOS was first acknowledged"
+    },
+    "resolved_at": {
+      "type": "string",
+      "default": "",
+      "description": "ISO timestamp when the SOS was marked resolved"
+    },
+    "is_demo": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": true,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

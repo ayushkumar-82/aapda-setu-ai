@@ -1,0 +1,65 @@
+{
+  "name": "ShelterSupply",
+  "type": "object",
+  "properties": {
+    "shelter_id": {
+      "type": "string",
+      "description": "ID of the shelter this supply belongs to"
+    },
+    "shelter_name": {
+      "type": "string",
+      "default": "",
+      "description": "Denormalized shelter name for display"
+    },
+    "item_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "medicine",
+        "food",
+        "water",
+        "sanitation",
+        "other"
+      ],
+      "default": "other"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 0,
+      "description": "Current stock level"
+    },
+    "unit": {
+      "type": "string",
+      "default": "units"
+    },
+    "min_threshold": {
+      "type": "number",
+      "default": 0,
+      "description": "Stock level at which a low-stock alert is raised"
+    }
+  },
+  "required": [
+    "shelter_id",
+    "item_name"
+  ],
+  "rls": {
+    "read": true,
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

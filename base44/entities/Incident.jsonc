@@ -1,0 +1,111 @@
+{
+  "name": "Incident",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "cyclone",
+        "flood",
+        "earthquake",
+        "landslide",
+        "tsunami",
+        "extreme_rainfall",
+        "heatwave",
+        "drought",
+        "storm",
+        "other"
+      ]
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "affected_area_km": {
+      "type": "number",
+      "default": 0
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "severe",
+        "critical"
+      ],
+      "default": "moderate"
+    },
+    "risk_probability": {
+      "type": "number",
+      "default": 0,
+      "description": "0-100 risk probability"
+    },
+    "confidence": {
+      "type": "number",
+      "default": 0,
+      "description": "0-100 model confidence"
+    },
+    "recommended_action": {
+      "type": "string",
+      "default": ""
+    },
+    "expected_time_window": {
+      "type": "string",
+      "default": ""
+    },
+    "alert_level": {
+      "type": "string",
+      "enum": [
+        "monitor",
+        "warn",
+        "escalate",
+        "critical"
+      ],
+      "default": "monitor"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "monitoring",
+        "resolved"
+      ],
+      "default": "active"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "ai_prediction",
+        "authority",
+        "demo",
+        "report"
+      ],
+      "default": "ai_prediction"
+    },
+    "weather_context": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "required": [
+    "type",
+    "latitude",
+    "longitude"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

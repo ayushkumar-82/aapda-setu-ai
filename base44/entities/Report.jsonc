@@ -1,0 +1,93 @@
+{
+  "name": "Report",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "address": {
+      "type": "string",
+      "default": ""
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "flooding",
+        "building_damage",
+        "road_blockage",
+        "landslide",
+        "fire",
+        "infrastructure_damage",
+        "fallen_tree",
+        "other"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "image_url": {
+      "type": "string",
+      "default": ""
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high",
+        "critical"
+      ],
+      "default": "moderate"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "unverified",
+        "ai_flagged",
+        "human_verified",
+        "rejected",
+        "resolved"
+      ],
+      "default": "unverified"
+    },
+    "ai_category": {
+      "type": "string",
+      "default": ""
+    },
+    "ai_severity": {
+      "type": "string",
+      "default": ""
+    },
+    "ai_confidence": {
+      "type": "number",
+      "default": 0
+    },
+    "reporter_name": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude",
+    "type"
+  ],
+  "rls": {
+    "read": true,
+    "create": true,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

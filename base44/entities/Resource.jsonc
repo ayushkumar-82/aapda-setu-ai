@@ -1,0 +1,80 @@
+{
+  "name": "Resource",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "rescue_team",
+        "ambulance",
+        "boat",
+        "medical_supplies",
+        "food",
+        "water",
+        "emergency_kit",
+        "vehicle",
+        "shelter"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "availability": {
+      "type": "number",
+      "default": 0,
+      "description": "Units available"
+    },
+    "capacity": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "assigned",
+        "deployed",
+        "depleted"
+      ],
+      "default": "available"
+    },
+    "assigned_to_sos": {
+      "type": "string",
+      "default": ""
+    },
+    "estimated_response_min": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "type",
+    "latitude",
+    "longitude"
+  ],
+  "rls": {
+    "read": true,
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

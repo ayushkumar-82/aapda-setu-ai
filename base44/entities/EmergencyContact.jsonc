@@ -1,0 +1,55 @@
+{
+  "name": "EmergencyContact",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "national_emergency",
+        "police",
+        "fire",
+        "ambulance",
+        "disaster_helpline",
+        "coast_guard",
+        "local_authority"
+      ],
+      "default": "national_emergency"
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "is_primary": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "number"
+  ],
+  "rls": {
+    "read": true,
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
